@@ -3,9 +3,9 @@ var fs = require("fs");
 var notesdb = require("../db/db.json");
 
 
-// ROUTING
+// routing
 module.exports = function(app) {
-  // API GET Requests
+  // API GET Requests JSON file
   app.get("/api/notes", function(req, res) {
     res.json(notesdb);
   });
@@ -13,7 +13,7 @@ module.exports = function(app) {
   // API POST 
   app.post("/api/notes", function(req, res) {
     
-    // npm i uniqid // install dependencies
+    // npm i uniqid ======= install dependencies
     let noteJ = {
       id: uniqid(),
       title: req.body.title,
@@ -38,7 +38,7 @@ module.exports = function(app) {
     });
   });
 
-  // API DELETE 
+  // API Delete 
   app.delete("/api/notes/:id", function(req, res) {
     let deleteID = req.params.id;
 
@@ -53,6 +53,8 @@ module.exports = function(app) {
           newD.splice(i,1);
         }
       }  
+
+     
       // re-write file
       fs.writeFile("./db/db.json", JSON.stringify(newD), (err) => {
         if (err) throw err;
@@ -62,4 +64,5 @@ module.exports = function(app) {
     });
   });
 
+  
 };
