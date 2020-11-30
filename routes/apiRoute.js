@@ -15,7 +15,7 @@ module.exports = function(app) {
     
     // npm i uniqid ======= install dependencies
     let noteJ = {
-      id: uniqid("BB-"),
+      id: uniqid("BB-"), //i added "BB" as identifier for my uniqid. you will get something like"BBkdjkjflkdj9890dkn09"
       title: req.body.title,
       text: req.body.text
     }
